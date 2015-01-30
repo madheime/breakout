@@ -232,7 +232,6 @@ public class Breakout extends JPanel implements ActionListener {
 			}
 		}
 		clock.displayClock(g2d);
-		count.update();
 		if (this.pause) {
 			// TODO pause the timer
 		
