@@ -12,16 +12,14 @@ public class CounterSprite implements Observer {
 
 
 //	private int currentHour;
-	private Counter count;
 	private int currentMinute;
 	private int currentSecond;
 	String storedTime;
 	public boolean isStart = true;
 
-	public CounterSprite(Counter count) {
-		this.setcount(count);
-		this.setcurrentSecond(count.getCurrentSecond());
-		this.setcurrentMinute(count.getCurrentMinute());
+	public CounterSprite() {
+		this.setcurrentSecond(0);
+		this.setcurrentMinute(0);
 	}
 	
 
@@ -29,9 +27,7 @@ public class CounterSprite implements Observer {
 //		return this.currentHour;
 //	}
 
-	public Counter getcount(){
-		return this.count;
-	}
+
 	public int getcurrentMinute() {
 		return this.currentMinute;
 	}
@@ -53,9 +49,6 @@ public class CounterSprite implements Observer {
 //		this.currentHour = hr;
 //	}
 
-	public void setcount(Counter count) {
-		this.count = count;
-	}
 	
 	public void setcurrentMinute(int min) {
 		this.currentMinute = min;
@@ -73,10 +66,10 @@ public class CounterSprite implements Observer {
 		this.isStart = flag;
 	}
 
-	public void update(Graphics2D gameImage) {
+	public void update(Graphics2D gameImage, int second, int minute) {
 //		this.setcurrentHour(currTime.get(Calendar.HOUR_OF_DAY));
-		this.setcurrentMinute(count.getCurrentMinute());
-		this.setcurrentSecond(count.getCurrentSecond());
+		this.setcurrentMinute(minute);
+		this.setcurrentSecond(second);
 		
 		String displayTime;
 

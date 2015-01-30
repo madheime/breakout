@@ -9,7 +9,10 @@ package dataModel;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
 import javax.swing.Timer;
+
+import displayModel.CounterSprite;
 
 public class Counter {
 
@@ -25,11 +28,13 @@ public class Counter {
     });
     private int currentSecond;
     private int currentMinute;
+    private CounterSprite countSprite;
 
     public Counter() {
 
         currentMinute = -1;
         currentSecond = 1;
+        this.countSprite = new CounterSprite()
     }
 
     public int getCurrentSecond() {

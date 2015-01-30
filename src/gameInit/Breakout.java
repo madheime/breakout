@@ -82,9 +82,9 @@ public class Breakout extends JPanel implements ActionListener {
 	private JButton Replay;
 	private JButton Undo;
 
-	public Breakout(Counter count) {
+	public Breakout() {
 		// create paddle ball clock and bricks
-		this.count = count;
+		this.count = new Counter();
 		this.gamePaddle = new Paddle();
 		// monitor keyboard event
 		this.addKeyListener(this.gamePaddle);
@@ -210,7 +210,10 @@ public class Breakout extends JPanel implements ActionListener {
 			gamePaddle.movePaddle();
 		//}
 	}
-
+	public void initDisplay(Graphics g) {
+		
+	}
+	
 	public void paint(Graphics g) {
 		super.paint(g);
 		Graphics2D g2d = (Graphics2D) g;
@@ -229,6 +232,7 @@ public class Breakout extends JPanel implements ActionListener {
 			}
 		}
 		clock.displayClock(g2d);
+		count.update();
 		if (this.pause) {
 			// TODO pause the timer
 		
@@ -240,8 +244,7 @@ public class Breakout extends JPanel implements ActionListener {
 		// Schedule a job for the event-dispatching thread:
 		// creating and showing this application's GUI.
 		JFrame frame = new JFrame("Breakout");
-		Counter count = new Counter();
-		Breakout breakout = new Breakout(count);
+		Breakout breakout = new Breakout();
 		breakout.setLayout(null);
 		breakout.setBackground(Color.WHITE);
 		breakout.setBounds(0, 0, 600, 600);
@@ -251,7 +254,6 @@ public class Breakout extends JPanel implements ActionListener {
 		panelControl.setLayout(new FlowLayout());
 		panelControl.setBackground(Color.GRAY);
 		breakout.addButton(panelControl);
-		breakout.addCounter(panelControl);
 
 		Container c = frame.getContentPane();
 		c.add(breakout, BorderLayout.CENTER);
